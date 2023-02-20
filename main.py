@@ -1,3 +1,7 @@
+from fractions import Fraction
+from matrix import Matrix
+
+
 def check_valid_matrix(matrix):
     length = len(matrix[0])
     for i in matrix:
@@ -142,4 +146,5 @@ def print_final(the_matrix: list):
 
 
 if __name__ == "__main__":
-    pass
+    e = Matrix(3, [[1, 2, 3], [12, 3], [4, 5, 6]])
+    print(e.matrix)

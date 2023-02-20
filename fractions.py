@@ -1,4 +1,4 @@
-from fractions import Fraction
+
 import math
 
 
@@ -14,7 +14,7 @@ class Fraction:
             self.numerator /= reduce_factor
             self.denominator /= reduce_factor
 
-    def add(self, f: Fraction):
+    def add(self, f):
         new_denominator = math.lcm(self.denominator, f.denominator)
         f_new_numerator = f.numerator * (self.denominator / f.denominator)
 
@@ -22,10 +22,26 @@ class Fraction:
         self.denominator = new_denominator
         self.reduce()
 
-    def sub(self, f: Fraction):
+    def sub(self, f):
         new_denominator = math.lcm(self.denominator, f.denominator)
         f_new_numerator = f.numerator * (self.denominator / f.denominator)
 
         self.numerator = (self.numerator * (new_denominator / self.denominator)) - f_new_numerator
+        self.denominator = new_denominator
+        self.reduce()
+
+    def multiply(self, f):
+        new_numerator = self.numerator * f.numerator
+        new_denominator = self.denominator * f.denominator
+
+        self.numerator = new_numerator
+        self.denominator = new_denominator
+        self.reduce()
+
+    def divide(self, f):
+        new_numerator = self.numerator * f.denominator
+        new_denominator = self.denominator * f.numerator
+
+        self.numerator = new_numerator
         self.denominator = new_denominator
         self.reduce()
